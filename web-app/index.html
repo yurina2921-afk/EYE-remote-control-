@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Remote Control</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>EYE REMOTE <span class="accent">PRO</span></h1>
+            <button id="connectBtn" class="btn-primary">Connect Micro:bit</button>
+            <div id="status" class="status-indicator">Disconnected</div>
+        </header>
+
+        <main>
+            <div class="eye-display">
+                <div class="eye-container">
+                    <div class="eye" id="visualEye">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-grid">
+                <!-- Directional Pad -->
+                <div class="d-pad">
+                    <button class="control-btn up" data-cmd="U">▲</button>
+                    <button class="control-btn left" data-cmd="L">◀</button>
+                    <button class="control-btn center" data-cmd="C">●</button>
+                    <button class="control-btn right" data-cmd="R">▶</button>
+                    <button class="control-btn down" data-cmd="D">▼</button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn" data-cmd="B">
+                        <span class="icon">👁️</span> Blink
+                    </button>
+                    <button class="action-btn" data-cmd="2">
+                        <span class="icon">👁️👁️</span> Double Blink
+                    </button>
+                    <button class="action-btn" data-cmd="W">
+                        <span class="icon">😉</span> Wink
+                    </button>
+                    <button class="action-btn" data-cmd="H">
+                        <span class="icon">🏠</span> Home
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Connected via Web Serial API</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
