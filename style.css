@@ -123,14 +123,14 @@ h1 {
 }
 
 .eye {
-    width: 50%;
-    /* Smaller iris (black part) */
-    height: 50%;
+    width: 40%;
+    /* Even smaller iris for more white space */
+    height: 40%;
     background: #000;
     border-radius: 50%;
     position: relative;
     transition: transform 0.2s ease-out;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
 .pupil {
