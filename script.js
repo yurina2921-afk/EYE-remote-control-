@@ -1,15 +1,18 @@
 let port;
 let writer;
-const visualEye = document.getElementById('visualEye');
+const eyeL = document.getElementById('visualEyeL');
+const eyeR = document.getElementById('visualEyeR');
+const containerL = document.querySelector('.left-eye');
+const containerR = document.querySelector('.right-eye');
 const connectBtn = document.getElementById('connectBtn');
 const statusIndicator = document.getElementById('status');
 
 // Eye positions mapping
 const eyePositions = {
-    'U': 'translateY(-20px)',
-    'D': 'translateY(20px)',
-    'L': 'translateX(-20px)',
-    'R': 'translateX(20px)',
+    'U': 'translateY(-15px)',
+    'D': 'translateY(15px)',
+    'L': 'translateX(-15px)',
+    'R': 'translateX(15px)',
     'C': 'translate(0, 0)',
     'H': 'translate(0, 0)'
 };
@@ -33,18 +36,34 @@ async function connect() {
     }
 }
 
+async function triggerBlink(eyeContainers, duration = 150) {
+    eyeContainers.forEach(container => container.classList.add('closed'));
+    setTimeout(() => {
+        eyeContainers.forEach(container => container.classList.remove('closed'));
+    }, duration);
+}
+
 async function sendCommand(cmd) {
     if (writer) {
         await writer.write(cmd);
         console.log('Sent:', cmd);
     }
 
-    // Update visual eye
+    // Update visual eye movement
     if (eyePositions[cmd]) {
-        visualEye.style.transform = eyePositions[cmd];
-    } else if (cmd === 'B' || cmd === '2' || cmd === 'W') {
-        visualEye.style.opacity = '0.1';
-        setTimeout(() => visualEye.style.opacity = '1', 150);
+        [eyeL, eyeR].forEach(eye => {
+            eye.style.transform = eyePositions[cmd];
+        });
+    }
+
+    // Trigger eyelid animations
+    if (cmd === 'B') {
+        triggerBlink([containerL, containerR]);
+    } else if (cmd === '2') {
+        await triggerBlink([containerL, containerR]);
+        setTimeout(() => triggerBlink([containerL, containerR]), 250);
+    } else if (cmd === 'W') {
+        triggerBlink([containerL]); // Wink left eye
     }
 }
 
@@ -58,7 +77,6 @@ document.querySelectorAll('.control-btn, .action-btn').forEach(btn => {
 
 connectBtn.addEventListener('click', () => {
     if (port) {
-        // Simple placeholder for disconnect
         port.close();
         port = null;
         writer = null;

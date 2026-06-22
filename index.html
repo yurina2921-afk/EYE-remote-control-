@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -16,11 +18,20 @@
         </header>
 
         <main>
-            <div class="eye-display">
-                <div class="eye-container">
-                    <div class="eye" id="visualEye">
+            <div class="eyes-display">
+                <div class="eye-container left-eye">
+                    <div class="eyelid top"></div>
+                    <div class="eye" id="visualEyeL">
                         <div class="pupil"></div>
                     </div>
+                    <div class="eyelid bottom"></div>
+                </div>
+                <div class="eye-container right-eye">
+                    <div class="eyelid top"></div>
+                    <div class="eye" id="visualEyeR">
+                        <div class="pupil"></div>
+                    </div>
+                    <div class="eyelid bottom"></div>
                 </div>
             </div>
 
@@ -37,16 +48,16 @@
                 <!-- Action Buttons -->
                 <div class="action-buttons">
                     <button class="action-btn" data-cmd="B">
-                        <span class="icon">👁️</span> Blink
+                        Blink
                     </button>
                     <button class="action-btn" data-cmd="2">
-                        <span class="icon">👁️👁️</span> Double Blink
+                        Double Blink
                     </button>
                     <button class="action-btn" data-cmd="W">
-                        <span class="icon">😉</span> Wink
+                        Wink
                     </button>
                     <button class="action-btn" data-cmd="H">
-                        <span class="icon">🏠</span> Home
+                        Home
                     </button>
                 </div>
             </div>
@@ -58,4 +69,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -66,24 +66,56 @@ h1 {
     box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
 }
 
-/* Eye Display */
-.eye-display {
+/* Eyes Display */
+.eyes-display {
     display: flex;
     justify-content: center;
+    gap: 3rem;
     margin-bottom: 3rem;
 }
 
 .eye-container {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     background: #fff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.2), 0 0 30px rgba(56, 189, 248, 0.2);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1), 0 0 30px rgba(56, 189, 248, 0.1);
     position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.eyelid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: 10;
+    transition: transform 0.15s ease-out;
+}
+
+.eyelid.top {
+    top: 0;
+    transform: translateY(-100%);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.eyelid.bottom {
+    bottom: 0;
+    transform: translateY(100%);
+    border-top: 2px solid var(--accent-color);
+}
+
+/* Eyelid Closed State */
+.eye-container.closed .eyelid.top {
+    transform: translateY(-50%);
+}
+
+.eye-container.closed .eyelid.bottom {
+    transform: translateY(50%);
 }
 
 .eye {
@@ -96,13 +128,13 @@ h1 {
 }
 
 .pupil {
-    width: 40%;
-    height: 40%;
+    width: 25%;
+    height: 25%;
     background: #fff;
     border-radius: 50%;
     position: absolute;
-    top: 20%;
-    left: 20%;
+    top: 30%;
+    left: 30%;
 }
 
 /* Controls */
@@ -120,7 +152,7 @@ h1 {
 
 .d-pad {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         ". up ."
         "left center right"
         ". down .";
@@ -128,11 +160,25 @@ h1 {
     justify-content: center;
 }
 
-.up { grid-area: up; }
-.down { grid-area: down; }
-.left { grid-area: left; }
-.right { grid-area: right; }
-.center { grid-area: center; }
+.up {
+    grid-area: up;
+}
+
+.down {
+    grid-area: down;
+}
+
+.left {
+    grid-area: left;
+}
+
+.right {
+    grid-area: right;
+}
+
+.center {
+    grid-area: center;
+}
 
 .control-btn {
     width: 60px;
